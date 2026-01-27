@@ -1,0 +1,114 @@
+[
+    {
+        "id": 1,
+        "category": "branding",
+        "categoryName": "Brand Identity",
+        "title": "Modern Brand Identity",
+        "description": "Complete branding package for innovative startup",
+        "client": "TechStart Innovation",
+        "date": "December 2023",
+        "tools": "Adobe Illustrator, Photoshop",
+        "coverImage": "https://images.unsplash.com/photo-1614850523296-d8c1af93d400?auto=format&fit=crop&q=80&w=800",
+        "images": [
+            "https://images.unsplash.com/photo-1614850523296-d8c1af93d400?auto=format&fit=crop&q=80&w=800",
+            "https://images.unsplash.com/photo-1524758631624-e2822e304c36?auto=format&fit=crop&q=80&w=800",
+            "https://images.unsplash.com/photo-1581291518062-c9a796e50f34?auto=format&fit=crop&q=80&w=800"
+        ]
+    },
+    {
+        "id": 2,
+        "category": "social",
+        "categoryName": "Social Media",
+        "title": "Engaging Social Media Posts",
+        "description": "Creative digital content design",
+        "client": "Digital Marketing Agency",
+        "date": "January 2024",
+        "tools": "Canva, Photoshop, Figma",
+        "coverImage": "img/social-3d.png",
+        "images": [
+            "img/social-3d.png",
+            "https://images.unsplash.com/photo-1611162617474-5b21e879e113?auto=format&fit=crop&q=80&w=800",
+            "https://images.unsplash.com/photo-1491438590914-bc09fcaaf77a?auto=format&fit=crop&q=80&w=800"
+        ]
+    },
+    {
+        "id": 3,
+        "category": "beauty",
+        "categoryName": "Beauty Studio",
+        "title": "Elegant Beauty Studio Posts",
+        "description": "Premium social media for beauty brands",
+        "client": "Glamour Beauty Lounge",
+        "date": "November 2023",
+        "tools": "Photoshop, Illustrator, Canva",
+        "coverImage": "https://images.unsplash.com/photo-1560750588-73207b1ef5b8?auto=format&fit=crop&q=80&w=800",
+        "images": [
+            "https://images.unsplash.com/photo-1560750588-73207b1ef5b8?auto=format&fit=crop&q=80&w=800",
+            "https://images.unsplash.com/photo-1522335789203-aabd1fc54bc9?auto=format&fit=crop&q=80&w=800",
+            "https://images.unsplash.com/photo-1512496015851-a90fb38ba496?auto=format&fit=crop&q=80&w=800"
+        ]
+    },
+    {
+        "id": 4,
+        "category": "festival",
+        "categoryName": "Festival Posts",
+        "title": "Vibrant Festival Creatives",
+        "description": "Eye-catching designs for celebrations",
+        "client": "Multiple Brands",
+        "date": "October 2023",
+        "tools": "Photoshop, Illustrator, CorelDRAW",
+        "coverImage": "https://images.unsplash.com/photo-1514361892635-6b07e31e75f9?auto=format&fit=crop&q=80&w=800",
+        "images": [
+            "https://images.unsplash.com/photo-1514361892635-6b07e31e75f9?auto=format&fit=crop&q=80&w=800",
+            "https://images.unsplash.com/photo-1510132162648-5c464e86e1af?auto=format&fit=crop&q=80&w=800",
+            "https://images.unsplash.com/photo-1504196606672-aef5c9cefc92?auto=format&fit=crop&q=80&w=800"
+        ]
+    },
+    {
+        "id": 5,
+        "category": "logo",
+        "categoryName": "Logo Design",
+        "title": "Professional Logo Collection",
+        "description": "Unique identities for diverse brands",
+        "client": "Multiple Businesses",
+        "date": "September 2023",
+        "tools": "Adobe Illustrator, CorelDRAW",
+        "coverImage": "https://images.unsplash.com/photo-1572044162444-ad60f128bdea?auto=format&fit=crop&q=80&w=800",
+        "images": [
+            "https://images.unsplash.com/photo-1572044162444-ad60f128bdea?auto=format&fit=crop&q=80&w=800",
+            "https://images.unsplash.com/photo-1626785774573-4b799315345d?auto=format&fit=crop&q=80&w=800",
+            "https://images.unsplash.com/photo-1581291518062-c9a796e50f34?auto=format&fit=crop&q=80&w=800"
+        ]
+    },
+    {
+        "id": 6,
+        "category": "print",
+        "categoryName": "Print Design",
+        "title": "Marketing Brochures & Flyers",
+        "description": "Engaging print materials for business",
+        "client": "Local Businesses",
+        "date": "August 2023",
+        "tools": "Adobe InDesign, Photoshop, Illustrator",
+        "coverImage": "https://images.unsplash.com/photo-1562577309-4932fdd64cd1?auto=format&fit=crop&q=80&w=800",
+        "images": [
+            "https://images.unsplash.com/photo-1562577309-4932fdd64cd1?auto=format&fit=crop&q=80&w=800",
+            "https://images.unsplash.com/photo-1568667256549-094345857637?auto=format&fit=crop&q=80&w=800",
+            "https://images.unsplash.com/photo-1532153975070-2e9ab71f1b14?auto=format&fit=crop&q=80&w=800"
+        ]
+    },
+    {
+        "id": 7,
+        "category": "uiux",
+        "categoryName": "UI UX Design",
+        "title": "Mobile App Interface",
+        "description": "Modern user experience design",
+        "client": "AppDev Studio",
+        "date": "February 2024",
+        "tools": "Figma, Adobe XD, Photoshop",
+        "coverImage": "https://images.unsplash.com/photo-1581291518062-c9a796e50f34?auto=format&fit=crop&q=80&w=800",
+        "images": [
+            "https://images.unsplash.com/photo-1581291518062-c9a796e50f34?auto=format&fit=crop&q=80&w=800",
+            "https://images.unsplash.com/photo-1551650975-87deedd944c3?auto=format&fit=crop&q=80&w=800",
+            "https://images.unsplash.com/photo-1586717791821-3f44a563eb4c?auto=format&fit=crop&q=80&w=800"
+        ]
+    }
+]

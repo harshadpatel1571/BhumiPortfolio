@@ -1,0 +1,436 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description"
+        content="Bhumi Patel - Professional Graphic Designer Portfolio | Photoshop, Illustrator, Figma Expert">
+    <meta name="keywords" content="graphic designer, portfolio, Bhumi Patel, Photoshop, Illustrator, Figma, Canva">
+    <title>Bhumi Patel | Graphic Designer Portfolio</title>
+
+    <!-- Bootstrap 5 CSS -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
+
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=Poppins:wght@400;500;600;700;800;900&display=swap"
+        rel="stylesheet">
+
+    <!-- Font Awesome Icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+
+    <!-- Custom CSS -->
+    <link rel="stylesheet" href="css/style.css">
+
+</head>
+
+<body>
+    <!-- Loading Screen -->
+    <div id="loading-screen">
+        <div class="loader">
+            <div class="loader-circle"></div>
+            <p class="mt-3">Loading Portfolio...</p>
+        </div>
+    </div>
+
+    <!-- Floating Blur Elements -->
+    <div class="blur-element blur-1"></div>
+    <div class="blur-element blur-2"></div>
+    <div class="blur-element blur-3"></div>
+
+    <!-- Navigation -->
+    <nav class="navbar navbar-expand-lg fixed-top" id="mainNav">
+        <div class="container">
+            <a class="navbar-brand" href="#home">
+                <span class="brand-text">Bhumi</span>
+                <span class="brand-accent">Patel</span>
+            </a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
+                <span></span>
+                <span></span>
+                <span></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarNav">
+                <ul class="navbar-nav ms-auto">
+                    <li class="nav-item">
+                        <a class="nav-link active" href="#home">Home</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="#about">About</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="#portfolio">Portfolio</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="#contact">Contact</a>
+                    </li>
+                </ul>
+                <a href="#contact" class="btn btn-primary ms-lg-3 cta-btn">Let's Talk</a>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <section id="home" class="hero-section">
+        <div class="hero-bg-shapes">
+            <div class="shape shape-1"></div>
+            <div class="shape shape-2"></div>
+            <div class="shape shape-3"></div>
+        </div>
+        <div class="container">
+            <div class="row align-items-center min-vh-100">
+                <div class="col-lg-6" data-aos="fade-right">
+                    <div class="hero-content">
+                        <h5 class="hero-subtitle">👋 Hello, I'm</h5>
+                        <h1 class="hero-title">
+                            <span class="gradient-text">Bhumi Patel</span>
+                        </h1>
+                        <h2 class="hero-tagline">Graphic Designer</h2>
+                        <p class="hero-description">
+                            Transforming ideas into stunning visual experiences. Specializing in branding,
+                            digital design, and creative solutions that leave a lasting impression.
+                        </p>
+                        <div class="hero-buttons">
+                            <a href="#portfolio" class="btn btn-primary btn-lg me-3">View My Work</a>
+                            <a href="#contact" class="btn btn-outline-primary btn-lg">Get in Touch</a>
+                        </div>
+                        <div class="hero-stats">
+                            <div class="stat-item">
+                                <h3>50+</h3>
+                                <p>Projects Done</p>
+                            </div>
+                            <div class="stat-item">
+                                <h3>30+</h3>
+                                <p>Happy Clients</p>
+                            </div>
+                            <div class="stat-item">
+                                <h3>2.5</h3>
+                                <p>Years Experience</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-lg-6" data-aos="fade-left">
+                    <div class="hero-image-container">
+                        <div class="hero-image-bg"></div>
+                        <div class="hero-image" id="heroImage"></div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="scroll-indicator">
+            <div class="mouse"></div>
+        </div>
+    </section>
+
+    <!-- About Section -->
+    <section id="about" class="about-section section-padding">
+        <div class="container">
+            <div class="section-header text-center" data-aos="fade-up">
+                <h6 class="section-subtitle">Get to Know Me</h6>
+                <h2 class="section-title">About <span class="gradient-text">Me</span></h2>
+                <div class="title-underline"></div>
+            </div>
+
+            <div class="row align-items-center mt-5">
+                <div class="col-lg-5" data-aos="fade-right">
+                    <div class="about-image-wrapper">
+                        <div class="about-image">
+                            <img src="img/about-me.jpg" alt="Bhumi Patel" class="img-fluid">
+                        </div>
+                        <div class="about-image-overlay">
+                            <div class="overlay-text">
+                                <h3>2.5</h3>
+                                <p>Years of Creative Excellence</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-lg-7" data-aos="fade-left">
+                    <div class="about-content">
+                        <h3 class="about-heading">I'm Bhumi Patel, <span class="gradient-text">Graphic Designer</span>
+                        </h3>
+                        <p class="about-text">
+                            I'm a passionate graphic designer with over 5 years of experience creating
+                            visually compelling designs that tell stories and solve problems. My expertise
+                            spans across branding, digital design, print media, and UI/UX design.
+                        </p>
+                        <p class="about-text">
+                            I believe that great design is not just about aesthetics—it's about creating
+                            meaningful connections between brands and their audiences. Every project is
+                            an opportunity to craft something unique and memorable.
+                        </p>
+
+                        <!-- Skills Progress -->
+                        <div class="skills-wrapper mt-4">
+                            <div class="skill-item">
+                                <div class="skill-header">
+                                    <span>Brand Identity Design</span>
+                                    <span class="skill-percentage">95%</span>
+                                </div>
+                                <div class="skill-bar">
+                                    <div class="skill-progress" style="width: 95%"></div>
+                                </div>
+                            </div>
+                            <div class="skill-item">
+                                <div class="skill-header">
+                                    <span>Digital Illustration</span>
+                                    <span class="skill-percentage">90%</span>
+                                </div>
+                                <div class="skill-bar">
+                                    <div class="skill-progress" style="width: 90%"></div>
+                                </div>
+                            </div>
+                            <div class="skill-item">
+                                <div class="skill-header">
+                                    <span>UI/UX Design</span>
+                                    <span class="skill-percentage">88%</span>
+                                </div>
+                                <div class="skill-bar">
+                                    <div class="skill-progress" style="width: 88%"></div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Design Tools -->
+            <div class="tools-section mt-5" data-aos="fade-up">
+                <h3 class="text-center mb-5">My <span class="gradient-text">Design Tools</span></h3>
+                <div class="row g-4">
+                    <div class="col-lg-2 col-md-4 col-6">
+                        <div class="tool-card">
+                            <div class="tool-icon photoshop">
+                                <img src="img/photoshop-v2.jpg" alt="Photoshop">
+                            </div>
+                            <h5>Photoshop</h5>
+                        </div>
+                    </div>
+                    <div class="col-lg-2 col-md-4 col-6">
+                        <div class="tool-card">
+                            <div class="tool-icon illustrator">
+                                <img src="img/Illustrator logo.jpeg" alt="Illustrator">
+                            </div>
+                            <h5>Illustrator</h5>
+                        </div>
+                    </div>
+                    <div class="col-lg-2 col-md-4 col-6">
+                        <div class="tool-card">
+                            <div class="tool-icon coraldraw">
+                                <img src="img/CorelDraw.jpeg" alt="CorelDRAW">
+                            </div>
+                            <h5>CorelDRAW</h5>
+                        </div>
+                    </div>
+                    <div class="col-lg-2 col-md-4 col-6">
+                        <div class="tool-card">
+                            <div class="tool-icon figma">
+                                <img src="img/figma-3d.jpg" alt="Figma">
+                            </div>
+                            <h5>Figma</h5>
+                        </div>
+                    </div>
+                    <div class="col-lg-2 col-md-4 col-6">
+                        <div class="tool-card">
+                            <div class="tool-icon canva">
+                                <img src="img/Canva Logo.jpeg" alt="Canva">
+                            </div>
+                            <h5>Canva</h5>
+                        </div>
+                    </div>
+                    <div class="col-lg-2 col-md-4 col-6">
+                        <div class="tool-card">
+                            <div class="tool-icon other">
+                                <i class="fas fa-plus"></i>
+                            </div>
+                            <h5>More Tools</h5>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Portfolio Section -->
+    <section id="portfolio" class="portfolio-section section-padding">
+        <div class="container">
+            <div class="section-header text-center" data-aos="fade-up">
+                <h6 class="section-subtitle">My Creative Work</h6>
+                <h2 class="section-title">Featured <span class="gradient-text">Portfolio</span></h2>
+                <div class="title-underline"></div>
+            </div>
+
+            <!-- Portfolio Filter -->
+            <div class="portfolio-filter text-center mt-5" data-aos="fade-up">
+                <button class="filter-btn active" data-filter="branding">Brand Identity</button>
+                <button class="filter-btn" data-filter="logo">Logo Design</button>
+                <button class="filter-btn" data-filter="uiux">UI UX Design</button>
+                <button class="filter-btn" data-filter="social">Social Media</button>
+                <button class="filter-btn" data-filter="beauty">Beauty Studio</button>
+                <button class="filter-btn" data-filter="festival">Festival Posts</button>
+                <button class="filter-btn" data-filter="print">Print Design</button>
+            </div>
+
+            <!-- Portfolio Grid -->
+            <div id="portfolio-grid" class="portfolio-grid mt-5">
+                <!-- Data dynamically loaded from projects.json -->
+            </div>
+        </div>
+    </section>
+
+    <!-- Contact Section -->
+    <section id="contact" class="contact-section section-padding">
+        <div class="container">
+            <div class="section-header text-center" data-aos="fade-up">
+                <h6 class="section-subtitle">Let's Connect</h6>
+                <h2 class="section-title">Get in <span class="gradient-text">Touch</span></h2>
+                <div class="title-underline"></div>
+            </div>
+
+            <div class="row mt-5">
+                <div class="col-lg-5" data-aos="fade-right">
+                    <div class="contact-info">
+                        <h3 class="mb-4">Let's work together!</h3>
+                        <p class="mb-4">
+                            Have a project in mind? I'd love to hear about it.
+                            Drop me a message and let's create something amazing together.
+                        </p>
+
+                        <div class="contact-item">
+                            <div class="contact-icon">
+                                <i class="fas fa-envelope"></i>
+                            </div>
+                            <div class="contact-details">
+                                <h5>Email</h5>
+                                <a href="mailto:bhumi.patel@designer.com">bhumi.patel@designer.com</a>
+                            </div>
+                        </div>
+
+                        <div class="contact-item">
+                            <div class="contact-icon">
+                                <i class="fas fa-phone"></i>
+                            </div>
+                            <div class="contact-details">
+                                <h5>Phone</h5>
+                                <a href="tel:+1234567890">+91 98765 43210</a>
+                            </div>
+                        </div>
+
+                        <div class="contact-item">
+                            <div class="contact-icon">
+                                <i class="fas fa-map-marker-alt"></i>
+                            </div>
+                            <div class="contact-details">
+                                <h5>Location</h5>
+                                <p>Mumbai, India</p>
+                            </div>
+                        </div>
+
+                        <div class="social-links mt-4">
+                            <a href="#" class="social-link"><i class="fab fa-behance"></i></a>
+                            <a href="#" class="social-link"><i class="fab fa-dribbble"></i></a>
+                            <a href="#" class="social-link"><i class="fab fa-instagram"></i></a>
+                            <a href="#" class="social-link"><i class="fab fa-linkedin"></i></a>
+                            <a href="#" class="social-link"><i class="fab fa-twitter"></i></a>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="col-lg-7" data-aos="fade-left">
+                    <form id="contactForm" class="contact-form">
+                        <div class="row">
+                            <div class="col-md-6">
+                                <div class="form-group">
+                                    <label for="name">Full Name *</label>
+                                    <input type="text" id="name" name="name" class="form-control" required>
+                                    <span class="error-message"></span>
+                                </div>
+                            </div>
+                            <div class="col-md-6">
+                                <div class="form-group">
+                                    <label for="email">Email Address *</label>
+                                    <input type="email" id="email" name="email" class="form-control" required>
+                                    <span class="error-message"></span>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="form-group">
+                            <label for="subject">Subject</label>
+                            <input type="text" id="subject" name="subject" class="form-control">
+                        </div>
+
+                        <div class="form-group">
+                            <label for="message">Message *</label>
+                            <textarea id="message" name="message" class="form-control" rows="5" required></textarea>
+                            <span class="error-message"></span>
+                        </div>
+
+                        <button type="submit" class="btn btn-primary btn-lg w-100">
+                            <span class="btn-text">Send Message</span>
+                            <span class="btn-loading" style="display: none;">
+                                <i class="fas fa-spinner fa-spin"></i> Sending...
+                            </span>
+                        </button>
+
+                        <div class="form-message mt-3" style="display: none;"></div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-content">
+                <p>&copy; 2024 Bhumi Patel. All Rights Reserved.</p>
+                <p class="footer-tagline">Designed with <i class="fas fa-heart"></i> and creativity</p>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Portfolio Modal -->
+    <div class="modal fade" id="portfolioModal" tabindex="-1">
+        <div class="modal-dialog modal-lg modal-dialog-centered">
+            <div class="modal-content">
+                <button type="button" class="modal-close" data-bs-dismiss="modal">
+                    <i class="fas fa-times"></i>
+                </button>
+                <div class="modal-body">
+                    <div id="projectCarousel" class="carousel slide mb-4" data-bs-ride="false">
+                        <div class="carousel-inner" id="modalCarouselContents">
+                            <!-- Images will be injected by JavaScript -->
+                        </div>
+                        <button class="carousel-control-prev" type="button" data-bs-target="#projectCarousel"
+                            data-bs-slide="prev">
+                            <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+                            <span class="visually-hidden">Previous</span>
+                        </button>
+                        <button class="carousel-control-next" type="button" data-bs-target="#projectCarousel"
+                            data-bs-slide="next">
+                            <span class="carousel-control-next-icon" aria-hidden="true"></span>
+                            <span class="visually-hidden">Next</span>
+                        </button>
+                    </div>
+                    <div class="modal-project-info text-center mt-3">
+                        <span class="modal-category"></span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Bootstrap JS -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
+
+    <!-- Custom JS -->
+    <script src="js/projects-data.js"></script>
+    <script src="js/script.js"></script>
+</body>
+
+</html>
