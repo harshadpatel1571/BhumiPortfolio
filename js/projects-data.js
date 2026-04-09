@@ -16,7 +16,6 @@ const portfolioData = [
         "categoryName": "Social Media",
         "coverImage": "img/work/Social Section.png",
         "images": [
-            "img/work/Social/1.jpg",
             "img/work/Social/2.jpg",
             "img/work/Social/3.jpg",
             "img/work/Social/4.jpg",
@@ -32,21 +31,6 @@ const portfolioData = [
             "img/work/Social/14.jpg",
             "img/work/Social/15.jpg",
             "img/work/Social/16.jpg",
-            "img/work/Social/17.jpg",
-            "img/work/Social/18.jpg",
-            "img/work/Social/19.jpg",
-            "img/work/Social/20.jpg",
-            "img/work/Social/21.jpg",
-            "img/work/Social/22.jpg",
-            "img/work/Social/23.jpg",
-            "img/work/Social/24.jpg",
-            "img/work/Social/25.jpg",
-            "img/work/Social/26.jpg",
-            "img/work/Social/27.jpg",
-            "img/work/Social/28.jpg",
-            "img/work/Social/29.jpg",
-            "img/work/Social/30.jpg",
-            "img/work/Social/31.jpg"
         ]
     },
     {
@@ -80,11 +64,6 @@ const portfolioData = [
             "img/work/FestivePost/8.jpg",
             "img/work/FestivePost/9.jpg",
             "img/work/FestivePost/10.jpg",
-            "img/work/FestivePost/11.jpg",
-            "img/work/FestivePost/12.jpg",
-            "img/work/FestivePost/13.jpg",
-            "img/work/FestivePost/14.jpg",
-            "img/work/FestivePost/15.jpg"
         ]
     },
     {
