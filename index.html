@@ -255,29 +255,51 @@
         </div>
     </section>
 
-    <!-- Portfolio Section -->
+    <!-- Portfolio Section — 3D Studio -->
     <section id="portfolio" class="portfolio-section section-padding">
         <div class="container">
+            <!-- Section Header -->
             <div class="section-header text-center" data-aos="fade-up">
-                <h6 class="section-subtitle">My Creative Work</h6>
+                <h6 class="section-subtitle">My Work</h6>
                 <h2 class="section-title">Featured <span class="gradient-text">Portfolio</span></h2>
                 <div class="title-underline"></div>
             </div>
 
-            <!-- Portfolio Filter -->
-            <div class="portfolio-filter text-center mt-5" data-aos="fade-up">
-                <!--<button class="filter-btn " data-filter="branding">Brand Identity</button>-->
-                <button class="filter-btn active" data-filter="logo">Logo Design</button>
-                <button class="filter-btn" data-filter="uiux">UI UX Design</button>
-                <button class="filter-btn" data-filter="social">Social Media</button>
-                <button class="filter-btn" data-filter="beauty">Beauty Studio</button>
-                <button class="filter-btn" data-filter="festival">Festival Posts</button>
-                <!--<button class="filter-btn" data-filter="print">Print Design</button>-->
+            <!-- Category Line -->
+            <div class="portfolio-filter text-center" data-aos="fade-up">
+                <!-- Buttons are generated from js/projects-data.js (order + names come
+                     from the data) — add a category there and it appears here automatically. -->
             </div>
 
-            <!-- Portfolio Grid -->
-            <div id="portfolio-grid" class="portfolio-grid mt-5">
-                <!-- Data dynamically loaded from projects.json -->
+            <!-- 3D Studio: display left + side panel (title / counter / work line) -->
+            <div class="ps-studio">
+                <div class="ps-layout">
+                    <!-- Main Display -->
+                    <div class="ps-stage" id="psStage">
+                        <span class="ps-chip ps-chip-cat" id="psChip"></span>
+                        <span class="ps-chip ps-chip-type" id="psType"><i class="fas fa-play"></i> Video</span>
+                        <div class="ps-stage-inner" id="psStageInner"></div>
+                        <span class="ps-glow" aria-hidden="true"></span>
+                    </div>
+
+                    <!-- Side panel: title + counter + sequential line (Back / Next) -->
+                    <aside class="ps-side">
+                        <div class="ps-side-head">
+                            <h3 id="psTitle"></h3>
+                            <span class="ps-count" id="psCount"></span>
+                        </div>
+
+                        <div class="ps-strip-wrap">
+                            <button type="button" class="ps-arrow" id="psPrev" aria-label="Previous work">
+                                <i class="fas fa-chevron-left"></i>
+                            </button>
+                            <div class="ps-strip" id="psStrip"></div>
+                            <button type="button" class="ps-arrow" id="psNext" aria-label="Next work">
+                                <i class="fas fa-chevron-right"></i>
+                            </button>
+                        </div>
+                    </aside>
+                </div>
             </div>
         </div>
     </section>
@@ -394,42 +416,12 @@
         </div>
     </footer>
 
-    <!-- Portfolio Modal -->
-    <div class="modal fade" id="portfolioModal" tabindex="-1">
-        <div class="modal-dialog modal-lg modal-dialog-centered">
-            <div class="modal-content">
-                <button type="button" class="modal-close" data-bs-dismiss="modal">
-                    <i class="fas fa-times"></i>
-                </button>
-                <div class="modal-body">
-                    <div id="projectCarousel" class="carousel slide mb-4" data-bs-ride="false">
-                        <div class="carousel-inner" id="modalCarouselContents">
-                            <!-- Images will be injected by JavaScript -->
-                        </div>
-                        <button class="carousel-control-prev" type="button" data-bs-target="#projectCarousel"
-                            data-bs-slide="prev">
-                            <span class="carousel-control-prev-icon" aria-hidden="true"></span>
-                            <span class="visually-hidden">Previous</span>
-                        </button>
-                        <button class="carousel-control-next" type="button" data-bs-target="#projectCarousel"
-                            data-bs-slide="next">
-                            <span class="carousel-control-next-icon" aria-hidden="true"></span>
-                            <span class="visually-hidden">Next</span>
-                        </button>
-                    </div>
-                    <div class="modal-project-info text-center mt-3">
-                        <span class="modal-category"></span>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </div>
-
     <!-- Bootstrap JS -->
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
 
     <!-- Custom JS -->
     <script src="js/projects-data.js"></script>
+    <script src="js/data-loader.js"></script>
     <script src="js/script.js"></script>
 </body>
 

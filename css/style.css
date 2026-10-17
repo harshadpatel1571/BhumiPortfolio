@@ -60,6 +60,7 @@
 
 html {
     scroll-behavior: smooth;
+    scroll-padding-top: 90px; /* keep anchored sections clear of the fixed navbar */
 }
 
 body {
@@ -906,108 +907,536 @@ body {
     box-shadow: 0 5px 15px rgba(108, 63, 245, 0.4);
 }
 
-.portfolio-grid {
-    display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
-    gap: 2rem;
+/* ========================================
+   Featured Portfolio — 3D Studio
+   (category line → display + side work panel)
+   ======================================== */
+.ps-studio {
+    margin-top: 2.5rem;
 }
 
-.portfolio-item {
+/* Display left, side panel right — everything on one screen */
+.ps-layout {
+    --ps-h: clamp(400px, 60vh, 600px);
+    display: grid;
+    grid-template-columns: minmax(0, 1fr) 300px;
+    gap: 1.5rem;
+    align-items: stretch;
+}
+
+/* Big display */
+.ps-stage {
+    position: relative;
+    height: var(--ps-h);
+    border-radius: var(--radius-xl);
+    border: 1px solid rgba(255, 255, 255, 0.08);
+    background: rgba(10, 14, 39, 0.65);
+    overflow: hidden;
+    perspective: 1400px;
+    box-shadow: var(--shadow-lg);
+    will-change: transform;
+}
+
+.ps-stage::before {
+    content: '';
+    position: absolute;
+    inset: -50px;
+    background-image: var(--ps-bg, none);
+    background-size: cover;
+    background-position: center;
+    filter: blur(45px) saturate(1.15);
+    opacity: 0.45;
+    transform: scale(1.15);
+    pointer-events: none;
+}
+
+.ps-stage::after {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background: radial-gradient(120% 130% at 50% 25%, rgba(10, 14, 39, 0.1) 0%, rgba(10, 14, 39, 0.82) 100%);
+    pointer-events: none;
+}
+
+/* Glow pulse on the display — opacity-only so it never janks */
+.ps-glow {
+    position: absolute;
+    inset: 0;
+    z-index: 1;
+    border-radius: inherit;
+    pointer-events: none;
+    opacity: 0;
+    box-shadow: inset 0 0 60px rgba(108, 63, 245, 0.6), inset 0 0 22px rgba(255, 0, 107, 0.35);
+    transition: opacity 0.55s ease;
+}
+
+.ps-stage.ps-flash .ps-glow {
+    opacity: 1;
+    transition-duration: 0.18s;
+}
+
+.ps-stage-inner {
+    position: absolute;
+    inset: 0;
+    z-index: 1;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 1.5rem;
+    transform-style: preserve-3d;
+}
+
+.ps-stage-inner.ps-flip-right {
+    animation: psFlipRight 0.5s cubic-bezier(0.22, 0.8, 0.28, 1) both;
+}
+
+.ps-stage-inner.ps-flip-left {
+    animation: psFlipLeft 0.5s cubic-bezier(0.22, 0.8, 0.28, 1) both;
+}
+
+@keyframes psFlipRight {
+    from {
+        opacity: 0;
+        transform: translate3d(48px, 0, 0) rotateY(-42deg) scale(0.95);
+    }
+
+    to {
+        opacity: 1;
+        transform: none;
+    }
+}
+
+@keyframes psFlipLeft {
+    from {
+        opacity: 0;
+        transform: translate3d(-48px, 0, 0) rotateY(42deg) scale(0.95);
+    }
+
+    to {
+        opacity: 1;
+        transform: none;
+    }
+}
+
+.ps-media {
+    max-width: 100%;
+    max-height: 100%;
+    width: auto;
+    height: auto;
+    object-fit: contain;
+    border-radius: var(--radius-md);
+    background: #000;
+    box-shadow: 0 24px 70px rgba(0, 0, 0, 0.5);
+}
+
+/* Category with no media yet (e.g. a fresh one added to the JSON) */
+.ps-stage-empty {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: 0.8rem;
+    text-align: center;
+    color: rgba(255, 255, 255, 0.45);
+    font-size: 0.78rem;
+    font-weight: 600;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+    border: 1px dashed rgba(255, 255, 255, 0.18);
+    border-radius: var(--radius-md);
+    padding: 3.5rem 2.5rem;
+    background: rgba(255, 255, 255, 0.015);
+}
+
+.ps-stage-empty i {
+    font-size: 1.6rem;
+    opacity: 0.7;
+}
+
+/* Chips on the display */
+.ps-chip {
+    position: absolute;
+    z-index: 2;
+    display: inline-flex;
+    align-items: center;
+    gap: 0.45rem;
+    padding: 0.35rem 0.9rem;
+    border-radius: 999px;
+    font-size: 0.72rem;
+    font-weight: 700;
+    letter-spacing: 1px;
+    text-transform: uppercase;
+    background: rgba(10, 14, 39, 0.7);
+    border: 1px solid rgba(255, 255, 255, 0.16);
+    backdrop-filter: blur(10px);
+    color: var(--color-text-primary);
+}
+
+.ps-chip-cat {
+    top: 1.1rem;
+    left: 1.1rem;
+}
+
+.ps-chip-type {
+    top: 1.1rem;
+    right: 1.1rem;
+    display: none;
+    background: var(--gradient-primary);
+    border-color: transparent;
+    box-shadow: 0 6px 18px rgba(108, 63, 245, 0.45);
+}
+
+.ps-chip-type.show {
+    display: inline-flex;
+}
+
+.ps-chip-type i {
+    font-size: 0.62rem;
+}
+
+/* Side panel: title + counter + work line */
+.ps-side {
+    display: flex;
+    flex-direction: column;
+    min-height: 0;
+    height: var(--ps-h);
+    padding: 1.25rem;
+    border-radius: var(--radius-xl);
+    border: 1px solid rgba(255, 255, 255, 0.08);
+    background: rgba(10, 14, 39, 0.45);
+    box-shadow: var(--shadow-lg);
+}
+
+.ps-side-head {
+    flex: 0 0 auto;
+    display: flex;
+    align-items: baseline;
+    justify-content: space-between;
+    gap: 0.75rem;
+    margin-bottom: 0.5rem;
+}
+
+.ps-side-head h3 {
+    font-family: var(--font-heading);
+    font-size: 1.05rem;
+    font-weight: 700;
+    margin: 0;
+    min-width: 0;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+}
+
+.ps-count {
+    font-family: var(--font-heading);
+    font-weight: 700;
+    letter-spacing: 3px;
+    font-size: 0.85rem;
+    color: var(--color-text-secondary);
+    white-space: nowrap;
+}
+
+/* Sequential line + Back / Next (vertical rail inside the side panel) */
+.ps-strip-wrap {
+    flex: 1 1 auto;
+    min-height: 0;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 0.75rem;
+    margin-top: 1rem;
+}
+
+.ps-arrow {
+    flex: 0 0 auto;
+    width: 46px;
+    height: 46px;
+    border-radius: 50%;
+    border: 1px solid rgba(255, 255, 255, 0.14);
+    background: rgba(26, 31, 58, 0.7);
+    backdrop-filter: blur(10px);
+    color: var(--color-text-primary);
+    font-size: 0.95rem;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
     transition: all var(--transition-normal);
 }
 
-.portfolio-item.hide {
+.ps-arrow:hover {
+    background: var(--gradient-primary);
+    border-color: transparent;
+    transform: translateY(-2px);
+    box-shadow: 0 8px 22px rgba(108, 63, 245, 0.45);
+}
+
+.ps-arrow:active {
+    transform: translateY(0) scale(0.95);
+}
+
+/* Vertical rail: chevrons point up / down */
+.ps-arrow i {
+    transform: rotate(90deg);
+}
+
+.ps-strip {
+    position: relative;
+    flex: 1 1 auto;
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    align-content: start;
+    gap: 0.75rem;
+    width: 100%;
+    min-height: 0;
+    overflow-y: auto;
+    overflow-x: hidden;
+    padding: 0.2rem 0.6rem 0.4rem 0.2rem;
+    scrollbar-width: none;
+    -ms-overflow-style: none;
+    scroll-behavior: smooth;
+}
+
+/* Give flying thumbs room to leave the rail while animating
+   (above the fan curtain, which sits at z-index 1200) */
+.ps-strip.ps-flying {
+    overflow: visible;
+    z-index: 1210;
+}
+
+.ps-strip::-webkit-scrollbar {
     display: none;
 }
 
-.portfolio-card {
+.ps-thumb {
     position: relative;
-    border-radius: var(--radius-lg);
-    overflow: hidden;
-    cursor: pointer;
-    height: 400px;
+    width: 100%;
+    height: 112px;
+    padding: 0;
+    border-radius: 16px;
+    border: 2px solid rgba(255, 255, 255, 0.08);
     background: rgba(26, 31, 58, 0.6);
-    border: 1px solid rgba(255, 255, 255, 0.05);
+    cursor: pointer;
+    overflow: hidden;
+    transition: border-color var(--transition-fast), box-shadow var(--transition-fast), opacity var(--transition-fast);
 }
 
-.portfolio-image {
+.ps-thumb-img {
+    position: absolute;
+    inset: 0;
+    display: block;
     width: 100%;
     height: 100%;
-    background-size: cover;
-    background-repeat: no-repeat;
-    background-position: center;
-    background-color: rgba(255, 255, 255, 0.01);
+    object-fit: cover;
+    background: rgba(26, 31, 58, 0.6);
     transition: transform var(--transition-slow);
 }
 
-/* Portfolio placeholder images with 3D Vector Style */
-.portfolio-img-1 {
-    background-image: url('https://images.unsplash.com/photo-1614850523296-d8c1af93d400?auto=format&fit=crop&q=80&w=800');
+.ps-thumb:hover {
+    border-color: rgba(255, 255, 255, 0.35);
 }
 
-.portfolio-img-2 {
-    background-image: url('../img/social-3d.png');
+.ps-thumb:hover .ps-thumb-img {
+    transform: scale(1.1);
 }
 
-.portfolio-img-3 {
-    background-image: url('https://images.unsplash.com/photo-1560750588-73207b1ef5b8?auto=format&fit=crop&q=80&w=800');
+.ps-thumb.active {
+    border-color: transparent;
+    box-shadow: 0 0 0 2px var(--color-primary), 0 10px 28px rgba(108, 63, 245, 0.45);
 }
 
-.portfolio-img-4 {
-    background-image: url('https://images.unsplash.com/photo-1514361892635-6b07e31e75f9?auto=format&fit=crop&q=80&w=800');
+.ps-thumb.active .ps-thumb-img {
+    transform: scale(1.12);
 }
 
-.portfolio-img-5 {
-    background-image: url('https://images.unsplash.com/photo-1572044162444-ad60f128bdea?auto=format&fit=crop&q=80&w=800');
-}
-
-.portfolio-img-6 {
-    background-image: url('https://images.unsplash.com/photo-1562577309-4932fdd64cd1?auto=format&fit=crop&q=80&w=800');
-}
-
-.portfolio-img-7 {
-    background-image: url('https://images.unsplash.com/photo-1581291518062-c9a796e50f34?auto=format&fit=crop&q=80&w=800');
-}
-
-.portfolio-overlay {
+.ps-thumb.active::after {
+    content: '';
     position: absolute;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    background: linear-gradient(180deg, rgba(215, 177, 248, 0) 0%, rgba(237, 166, 222, 0.95) 100%);
+    inset: 0;
+    background: linear-gradient(135deg, rgba(108, 63, 245, 0.35) 0%, rgba(255, 0, 107, 0.35) 100%);
+    pointer-events: none;
+}
+
+.ps-thumb-play {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    z-index: 2;
+    width: 30px;
+    height: 30px;
+    border-radius: 50%;
     display: flex;
-    align-items: flex-end;
+    align-items: center;
     justify-content: center;
+    font-size: 0.6rem;
+    color: var(--color-text-primary);
+    background: rgba(10, 14, 39, 0.72);
+    border: 1px solid rgba(255, 255, 255, 0.4);
+    backdrop-filter: blur(4px);
+    pointer-events: none;
+}
+
+.ps-thumb-play i {
+    padding-left: 2px;
+}
+
+/* Elements fly in, then settle into place
+   (--dx / --dy / --rx / --ry / --rz / --sc / --d are set by JS) */
+.ps-enter {
+    animation: psFlyIn 0.95s cubic-bezier(0.2, 0.85, 0.25, 1) both;
+    animation-delay: var(--d, 0ms);
+}
+
+@keyframes psFlyIn {
+    from {
+        opacity: 0;
+        transform: perspective(700px) translate3d(var(--dx, -260px), var(--dy, -190px), 160px) rotateX(var(--rx, 40deg)) rotateY(var(--ry, -55deg)) rotateZ(var(--rz, 12deg)) scale(var(--sc, 0.3));
+    }
+
+    to {
+        opacity: 1;
+        transform: perspective(700px) translate3d(0, 0, 0) rotateX(0) rotateY(0) rotateZ(0) scale(1);
+    }
+}
+
+/* Light 2D variant for the many thumbnails — compositor-friendly */
+.ps-enter-soft {
+    animation: psFlyInSoft 0.6s cubic-bezier(0.22, 0.85, 0.3, 1) both;
+    animation-delay: var(--d, 0ms);
+}
+
+@keyframes psFlyInSoft {
+    from {
+        opacity: 0;
+        transform: translate3d(var(--dx, -200px), var(--dy, 140px), 0) rotate(var(--rz, -10deg)) scale(var(--sc, 0.6));
+    }
+
+    to {
+        opacity: 1;
+        transform: translate3d(0, 0, 0) rotate(0deg) scale(1);
+    }
+}
+
+.ps-enter,
+.ps-enter-soft,
+.ps-fan-show {
+    will-change: transform, opacity;
+}
+
+/* Full-screen hand-fan show (first load / every category change): the works
+   appear as a closed stack, swing open left-to-right around the pivot,
+   hold in the middle of the screen, then sail into the side panel.
+   Timeline: 6% appear / 6–23% open (arc mid-points) / 23–64% hold (≈1s) /
+   64–100% glide home — keep in sync with the FAN_* values in JS.
+   (--fx / --fy / --frot = fan slot, --fx0 / --fy0 / --frot0 = closed stack,
+   --fxm1/--fxm2 = arc mid-points, --d = stagger, --fsc = card size) */
+.ps-fan-show {
+    animation: psFanShow 2.26s cubic-bezier(0.3, 0.75, 0.3, 1) both;
+    animation-delay: var(--d, 0ms);
+}
+
+@keyframes psFanShow {
+    0% {
+        opacity: 0;
+        transform: translate3d(var(--fx0, 0px), var(--fy0, 0px), 0) rotate(var(--frot0, -60deg)) scale(var(--fsc, 1.6));
+    }
+
+    6% {
+        opacity: 1;
+        transform: translate3d(var(--fx0, 0px), var(--fy0, 0px), 0) rotate(var(--frot0, -60deg)) scale(var(--fsc, 1.6));
+        animation-timing-function: cubic-bezier(0.5, 0, 0.8, 0.65);
+    }
+
+    11.7% {
+        opacity: 1;
+        transform: translate3d(var(--fxm1, 0px), var(--fym1, 0px), 0) rotate(var(--frotm1, 0deg)) scale(var(--fsc, 1.6));
+        animation-timing-function: linear;
+    }
+
+    17.3% {
+        opacity: 1;
+        transform: translate3d(var(--fxm2, 0px), var(--fym2, 0px), 0) rotate(var(--frotm2, 0deg)) scale(var(--fsc, 1.6));
+        animation-timing-function: cubic-bezier(0.2, 0.45, 0.35, 1);
+    }
+
+    23% {
+        opacity: 1;
+        transform: translate3d(var(--fx, 0px), var(--fy, 0px), 0) rotate(var(--frot, 0deg)) scale(var(--fsc, 1.6));
+    }
+
+    64% {
+        opacity: 1;
+        transform: translate3d(var(--fx, 0px), var(--fy, 0px), 0) rotate(var(--frot, 0deg)) scale(var(--fsc, 1.6));
+        animation-timing-function: cubic-bezier(0.45, 0.05, 0.25, 1);
+    }
+
+    100% {
+        opacity: 1;
+        transform: translate3d(0, 0, 0) rotate(0deg) scale(1);
+    }
+}
+
+/* Dark curtain: hides every section while the fan is on stage */
+.ps-fan-backdrop {
+    position: fixed;
+    inset: 0;
+    z-index: 1200;
+    background: var(--color-bg-dark);
     opacity: 0;
-    /* Hidden by default, shows on hover */
-    transition: opacity 0.3s ease;
+    pointer-events: none;
+    transition: opacity 0.4s ease;
 }
 
-.portfolio-card:hover .portfolio-overlay {
+.ps-fan-backdrop.on {
     opacity: 1;
-    /* Show overlay on hover */
+    pointer-events: auto;
 }
 
-.portfolio-card:hover .portfolio-image {
-    transform: scale(1.05);
-    /* Zoom image on hover */
+/* Fixed top layer: the works fly here during the show — above the curtain,
+   pinned to the viewport so nothing can cover or clip them */
+.ps-fan-layer {
+    position: fixed;
+    inset: 0;
+    z-index: 1300;
+    pointer-events: none;
 }
 
-.portfolio-content {
-    text-align: center;
-    padding: 1.5rem;
-    transform: translateY(20px);
-    /* Start position below */
-    transition: transform 0.3s ease;
+/* Page stays still while the show runs (--ps-sbw = scrollbar width) */
+body.ps-fan-lock {
+    overflow: hidden;
+    padding-right: var(--ps-sbw, 0px);
 }
 
-.portfolio-card:hover .portfolio-content {
-    transform: translateY(0);
-    /* Slide up on hover */
+/* Smaller screens: keep the fan compact */
+@media (max-width: 767px) {
+    .ps-fan-show {
+        --fsc: 1.2;
+    }
 }
 
-/* Modal Carousel Styles */
+/* Reduced motion */
+@media (prefers-reduced-motion: reduce) {
+
+    .ps-enter,
+    .ps-enter-soft,
+    .ps-fan-show {
+        animation: none;
+    }
+
+    .ps-stage-inner.ps-flip-left,
+    .ps-stage-inner.ps-flip-right {
+        animation: none;
+    }
+
+    .ps-strip {
+        scroll-behavior: auto;
+    }
+}
+
+/* ========================================
+   Portfolio Modal Carousel (used by preview.html)
+   ======================================== */
 .modal-carousel-container {
     width: 100%;
     background: rgba(0, 0, 0, 0.2);
@@ -1059,46 +1488,10 @@ body {
     opacity: 1;
 }
 
-.portfolio-category {
-    display: inline-block;
-    background: rgba(255, 255, 255, 0.2);
-    padding: 0.3rem 1rem;
-    border-radius: var(--radius-sm);
-    font-size: 0.85rem;
-    font-weight: 600;
-    margin-bottom: 0.5rem;
-    text-transform: uppercase;
-    letter-spacing: 1px;
-}
-
-.portfolio-title {
-    font-family: var(--font-heading);
-    font-size: 1.5rem;
-    font-weight: 700;
-    margin-bottom: 0.5rem;
-}
-
-.portfolio-description {
-    font-size: 0.95rem;
-    margin-bottom: 1.5rem;
-    opacity: 0.9;
-}
-
-.btn-view {
-    background: rgba(255, 255, 255, 0.2);
-    color: var(--color-text-primary);
-    border: 2px solid var(--color-text-primary);
-    padding: 0.6rem 1.5rem;
-    border-radius: var(--radius-md);
-    font-weight: 600;
-    cursor: pointer;
-    transition: all var(--transition-normal);
-}
-
-.btn-view:hover {
-    background: var(--color-text-primary);
-    color: var(--color-primary);
-    transform: translateY(-2px);
+/* Videos inside the modal carousel */
+video.modal-carousel-img {
+    background: #000;
+    outline: none;
 }
 
 /* ========================================
@@ -1161,6 +1554,7 @@ body {
     text-decoration: none;
     margin: 0;
     transition: color var(--transition-fast);
+    overflow-wrap: anywhere; /* long emails never overflow on small phones */
 }
 
 .contact-details a:hover {
@@ -1510,6 +1904,49 @@ textarea.form-control {
         margin-top: 1rem;
         width: 100%;
     }
+
+    .ps-layout {
+        grid-template-columns: 1fr;
+    }
+
+    .ps-stage {
+        height: auto;
+        aspect-ratio: 16 / 10;
+    }
+
+    .ps-side {
+        height: auto;
+    }
+
+    .ps-strip-wrap {
+        flex-direction: row;
+        margin-top: 1.25rem;
+    }
+
+    .ps-strip {
+        display: flex;
+        flex-direction: row;
+        width: auto;
+        overflow-x: auto;
+        overflow-y: hidden;
+        padding: 0.45rem 0.2rem 0.9rem;
+    }
+
+    .ps-arrow i {
+        transform: none;
+    }
+
+    .ps-thumb {
+        flex: 0 0 auto;
+        width: 84px;
+        height: 84px;
+        scroll-snap-align: center;
+    }
+
+    /* Nicer thumb swiping on touch devices */
+    .ps-strip {
+        scroll-snap-type: x proximity;
+    }
 }
 
 @media (max-width: 767px) {
@@ -1543,8 +1980,40 @@ textarea.form-control {
         margin-top: 2rem;
     }
 
-    .portfolio-grid {
-        grid-template-columns: 1fr;
+    .ps-stage {
+        aspect-ratio: 4 / 3;
+    }
+
+    .ps-stage-inner {
+        padding: 1rem;
+    }
+
+    .ps-side-head h3 {
+        font-size: 1.05rem;
+    }
+
+    .ps-thumb {
+        width: 74px;
+        height: 74px;
+        border-radius: 14px;
+    }
+
+    .ps-arrow {
+        width: 44px;
+        height: 44px;
+    }
+
+    .ps-strip {
+        gap: 0.6rem;
+    }
+
+    .ps-side {
+        padding: 1rem;
+    }
+
+    .ps-strip-wrap {
+        margin-top: 0.75rem;
+        gap: 0.5rem;
     }
 
     .contact-form {
@@ -1573,8 +2042,55 @@ textarea.form-control {
         font-size: 1.75rem;
     }
 
+    .section-padding {
+        padding: 3.25rem 0;
+    }
+
     .filter-btn {
         padding: 0.5rem 1rem;
         font-size: 0.85rem;
+    }
+
+    .portfolio-filter {
+        gap: 0.6rem;
+    }
+
+    .hero-stats {
+        gap: 1.25rem;
+    }
+
+    .contact-info h3 {
+        font-size: 1.6rem;
+    }
+
+    .contact-item {
+        gap: 1rem;
+        padding: 1.15rem;
+    }
+
+    .about-heading {
+        font-size: 1.6rem;
+    }
+
+    .overlay-text h3 {
+        font-size: 2rem;
+    }
+
+    .tool-icon {
+        width: 84px;
+        height: 84px;
+    }
+
+    .ps-studio {
+        margin-top: 1.75rem;
+    }
+
+    .ps-thumb {
+        width: 64px;
+        height: 64px;
+    }
+
+    .ps-side-head h3 {
+        font-size: 0.98rem;
     }
 }
